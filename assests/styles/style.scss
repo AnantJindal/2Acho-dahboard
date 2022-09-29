@@ -1,0 +1,340 @@
+// Font family
+
+@font-face {
+    font-family: 'inter';
+    src: url(../fonts/inter.ttf);
+}
+
+// Importing Mixin's
+
+@import 'mixin';
+
+// Common stylings
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'inter';
+}
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+$headingColor: #1A1A1A;
+
+// Header styling
+
+header {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(26, 26, 26, 0.08);
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+
+    .container {
+        .logoContainer{
+            width: 100px;
+            height: 39px;
+            overflow: hidden;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        ul {
+            display: flex;
+            gap: 56px;
+
+            li {
+                a {
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: $headingColor;
+                }
+            }
+
+            .active {
+                margin-bottom: -30px;
+                border-bottom: 5px solid #F36B25;
+            }
+        }
+
+        .wallet {
+            background: #F5F5F5;
+            border-radius: 8px;
+            padding: 10px;
+
+            a {
+                text-decoration: none;
+                display: flex;
+                font-weight: 800;
+                gap: 10px;
+                font-size: 14px;
+                line-height: 24px;
+                color: $headingColor;
+            }
+        }
+    }
+}
+
+
+// Development cycle Styling
+.development-cycle {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    justify-content: center;
+    padding: 40px 20px;
+    margin-top: 74px;
+
+    span {
+        display: block;
+        padding-top: 5px;
+    }
+
+    .page-circle {
+        text-align: center;
+
+        .page-name {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            color: $headingColor;
+        }
+
+        .page-btn {
+            height: 7px;
+            width: 12px;
+            border: 7px solid #EEEEEE;
+            border-radius: 53%;
+            display: inline-block;
+        }
+    }
+
+    .active {
+        .page-btn {
+            border-color: #F36B25;
+        }
+    }
+
+    .spaceLine {
+        width: 92px;
+
+        span {
+            height: 2px;
+            width: 100%;
+            margin-top: 10px;
+            background: linear-gradient(0deg, #EEEEEE, #EEEEEE), #FFFFFF;
+        }
+    }
+}
+
+// Form Part styling
+
+.form {
+    width: 50%;
+    margin: 0 auto 10%;
+    background: #FFFFFF;
+    border: 1px solid #EBEBEB;
+    border-radius: 8px;
+
+    .form-heading {
+        display: flex;
+        background-color: #F5F5F5;
+        padding: 24px 30px 12px;
+        gap: 14px;
+
+        h3 {
+            color: $headingColor;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+    }
+
+    .form-inputs {
+        padding: 0px 30px 12px;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-top: 24px;
+
+            label {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 18px;
+                color: #808080;
+            }
+
+            input {
+                @include inputStyling();
+
+                &::placeholder {
+                    color: $headingColor
+                }
+
+            }
+
+            textarea {
+                @include inputStyling();
+                resize: vertical;
+
+                &::placeholder {
+                    color: $headingColor
+                }
+
+            }
+
+        }
+
+        .form-group:last-child {
+            width: 50%;
+        }
+
+        .form-input-group {
+            display: flex;
+            gap: 15px;
+
+            // column-gap: 80px
+            .form-group {
+                width: 48%;
+            }
+        }
+
+    }
+
+    .btncontainer {
+        padding: 24px 30px 24px;
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+            width: 146px;
+            background: #F36B25;
+            border: 1px solid #F36B25;
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 26px;
+            color: #FFFFFF;
+        }
+    }
+}
+
+// Responsive Part Styling
+
+@media all and(max-width:992px) {
+    // Form CSS
+
+    .form {
+        width: 70%;
+        margin: 0 auto 10%;
+    }
+}
+
+@media all and(max-width:768px) {
+
+    // Header CSS
+    header {
+        .container {
+            ul {
+                display: none;
+            }
+        }
+    }
+
+
+    // Form CSS
+    .form {
+        width: 80%;
+
+        .form-inputs {
+            .form-input-group {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+
+                // column-gap: 80px
+                .form-group {
+                    flex-basis: 99%;
+                }
+            }
+
+            .form-group:last-child {
+                width: 99%;
+            }
+        }
+        .btncontainer {
+            button {width: 100%;}
+        }
+    }
+}
+
+@media all and(max-width:425px) {
+
+    // Development cycle CSS
+
+    .development-cycle {
+        .page-circle {
+            .page-btn {
+                height: 7px;
+                width: 12px;
+            }
+
+            .page-name {
+                font-weight: 600;
+                font-size: 12px;
+            }
+        }
+
+        .spaceLine {
+            width: 22px;
+        }
+    }
+
+    // Form CSS
+    .form {
+        width: 90%;
+
+        .form-heading {
+            gap: 8px;
+            padding: 24px 10px 12px;
+
+            h3 {
+                font-size: 16px;
+            }
+        }
+
+        .form-inputs {
+            padding: 0px 10px 12px;
+
+            .form-group {
+
+                label,
+                input,
+                textarea {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
